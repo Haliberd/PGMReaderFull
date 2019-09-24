@@ -18,6 +18,7 @@ public class Secuencial {
     public int maxvalue;
     public int[][] matrizO;
     public LectorImagen lectorI;
+    private Menu menu = new Menu();
     
     public Secuencial() throws IOException{
         this.lectorI = new LectorImagen();
@@ -28,7 +29,7 @@ public class Secuencial {
     }
     
     public void iniciarSecuencia() throws IOException{
-        int opcion = 1;
+        int opcion = menu.menuOpciones();
         switch(opcion){
             case 1:
                 this.matrizO = lectorI.devolverImagen();
