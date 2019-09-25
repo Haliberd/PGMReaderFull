@@ -141,6 +141,47 @@ public class Secuencial {
                 }
                 new SalidaArchivo(picWidth, picHeight, maxvalue, "imagenOpcion"+opcion+"E").EscribirAArchivo(matrizO);
                 break;
+            case 6:
+                this.matrizO = lectorI.devolverImagen();
+                for(int i = 0; i<(picHeight/2); i++){
+                    escribir0_3_1D(2*i);
+                    //System.out.println("F");
+                }
+                for(int i = 0; i<(picHeight/2); i++){
+                    escribir0_3_1D((2*i)+1);
+                    //System.out.println("E");
+                }
+                for(int i = 0; i<(picHeight/2); i++){
+                    escribir0_3_1E(2*i);
+                    //System.out.println("A");
+                }
+                for(int i = 0; i<(picHeight/2); i++){
+                    escribir0_3_1E((2*i)+1);
+                    //System.out.println("R");
+                }
+                new SalidaArchivo(picWidth, picHeight, maxvalue, "imagenDE").EscribirAArchivo(matrizO);
+                break;
+            case 7:
+                this.matrizO = lectorI.devolverImagen();
+                for(int i = 0; i<(picHeight/2); i++){
+                    escribir0_3_1E(2*i);
+                    //System.out.println("A");
+                }
+                for(int i = 0; i<(picHeight/2); i++){
+                    escribir0_3_1E((2*i)+1);
+                    //System.out.println("R");
+                }
+                for(int i = 0; i<(picHeight/2); i++){
+                    escribir0_3_1D(2*i);
+                    //System.out.println("F");
+                }
+                for(int i = 0; i<(picHeight/2); i++){
+                    escribir0_3_1D((2*i)+1);
+                    //System.out.println("E");
+                }
+                
+                new SalidaArchivo(picWidth, picHeight, maxvalue, "imagenED").EscribirAArchivo(matrizO);
+                break;
         }
     }
     

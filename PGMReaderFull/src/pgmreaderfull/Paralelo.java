@@ -32,54 +32,135 @@ public class Paralelo {
         //System.out.printf("Width: %3d, Height: %3d, MaxValue: %3d\n", picWidth, picHeight, maxvalue);
         int opcion = menu.menuOpciones();
         if(opcion != 9){
-            
-            MonitorDeImagen monitor = new MonitorDeImagen(matrizO, picWidth, picHeight, maxvalue);
+            if(opcion < 6){
+                MonitorDeImagen monitor = new MonitorDeImagen(matrizO, picWidth, picHeight, maxvalue);
 
-            Thread[] thr = new Thread[(picHeight/2)];
-            for(int i = 0; i < (picHeight/2); i++){
-                thr[i] = new Thread( new EscritorFila(2*i, monitor, opcion) );
-                thr[i].start();
+                Thread[] thr = new Thread[(picHeight/2)];
+                for(int i = 0; i < (picHeight/2); i++){
+                    thr[i] = new Thread( new EscritorFila(2*i, monitor, opcion) );
+                    thr[i].start();
+                }
+                for(Thread t : thr)
+                    t.join();
+                thr = new Thread[(picHeight/2)];
+                for(int i = 0; i < (picHeight/2); i++){
+                    thr[i] = new Thread( new EscritorFila((2*i)+1, monitor, opcion ));
+                    thr[i].start();
+                }
+                for(Thread t : thr)
+                    t.join();
+
+
+
+                int[][] imagenN = monitor.matrizO;
+
+                SalidaArchivo sa = new SalidaArchivo(picWidth, picHeight, maxvalue, "imagen"+opcion+"D");
+
+                sa.EscribirAArchivo(imagenN);
+
+
+                monitor.matrizO = lectorI.devolverImagen();
+                thr = new Thread[(picHeight/2)];
+                for(int i = 0; i < (picHeight/2); i++){
+                    thr[i] = new Thread( new EscritorFila(2*i, monitor, opcion+5) );
+                    thr[i].start();
+                }
+                for(Thread t : thr)
+                    t.join();
+                thr = new Thread[(picHeight/2)];
+                for(int i = 0; i < (picHeight/2); i++){
+                    thr[i] = new Thread( new EscritorFila((2*i)+1, monitor, opcion+5 ));
+                    thr[i].start();
+                }
+                for(Thread t : thr)
+                    t.join();
+
+                imagenN = monitor.matrizO;
+
+                sa = new SalidaArchivo(picWidth, picHeight, maxvalue, "imagen"+opcion+"E");
+
+                sa.EscribirAArchivo(imagenN);
             }
-            for(Thread t : thr)
-                t.join();
-            thr = new Thread[(picHeight/2)];
-            for(int i = 0; i < (picHeight/2); i++){
-                thr[i] = new Thread( new EscritorFila((2*i)+1, monitor, opcion ));
-                thr[i].start();
+            else if(opcion == 6){
+                MonitorDeImagen monitor = new MonitorDeImagen(matrizO, picWidth, picHeight, maxvalue);
+
+                Thread[] thr = new Thread[(picHeight/2)];
+                for(int i = 0; i < (picHeight/2); i++){
+                    thr[i] = new Thread( new EscritorFila(2*i, monitor, 3) );
+                    thr[i].start();
+                }
+                for(Thread t : thr)
+                    t.join();
+                thr = new Thread[(picHeight/2)];
+                for(int i = 0; i < (picHeight/2); i++){
+                    thr[i] = new Thread( new EscritorFila((2*i)+1, monitor, 3 ));
+                    thr[i].start();
+                }
+                for(Thread t : thr)
+                    t.join();
+
+                thr = new Thread[(picHeight/2)];
+                for(int i = 0; i < (picHeight/2); i++){
+                    thr[i] = new Thread( new EscritorFila(2*i, monitor, 3+5) );
+                    thr[i].start();
+                }
+                for(Thread t : thr)
+                    t.join();
+                thr = new Thread[(picHeight/2)];
+                for(int i = 0; i < (picHeight/2); i++){
+                    thr[i] = new Thread( new EscritorFila((2*i)+1, monitor, 3+5 ));
+                    thr[i].start();
+                }
+                for(Thread t : thr)
+                    t.join();
+
+                int[][] imagenN = monitor.matrizO;
+
+                SalidaArchivo sa = new SalidaArchivo(picWidth, picHeight, maxvalue, "imagenDE");
+
+                sa.EscribirAArchivo(imagenN);
             }
-            for(Thread t : thr)
-                t.join();
+            else if(opcion == 7){
+                MonitorDeImagen monitor = new MonitorDeImagen(matrizO, picWidth, picHeight, maxvalue);
+
+                Thread[] thr = new Thread[(picHeight/2)];
+
+                thr = new Thread[(picHeight/2)];
+                for(int i = 0; i < (picHeight/2); i++){
+                    thr[i] = new Thread( new EscritorFila(2*i, monitor, 3+5) );
+                    thr[i].start();
+                }
+                for(Thread t : thr)
+                    t.join();
+                thr = new Thread[(picHeight/2)];
+                for(int i = 0; i < (picHeight/2); i++){
+                    thr[i] = new Thread( new EscritorFila((2*i)+1, monitor, 3+5 ));
+                    thr[i].start();
+                }
+                for(Thread t : thr)
+                    t.join();
 
 
+                for(int i = 0; i < (picHeight/2); i++){
+                    thr[i] = new Thread( new EscritorFila(2*i, monitor, 3) );
+                    thr[i].start();
+                }
+                for(Thread t : thr)
+                    t.join();
+                thr = new Thread[(picHeight/2)];
+                for(int i = 0; i < (picHeight/2); i++){
+                    thr[i] = new Thread( new EscritorFila((2*i)+1, monitor, 3 ));
+                    thr[i].start();
+                }
+                for(Thread t : thr)
+                    t.join();
 
-            int[][] imagenN = monitor.matrizO;
+                int[][] imagenN = monitor.matrizO;
 
-            SalidaArchivo sa = new SalidaArchivo(picWidth, picHeight, maxvalue, "imagen"+opcion+"D");
+                SalidaArchivo sa = new SalidaArchivo(picWidth, picHeight, maxvalue, "imagenED");
 
-            sa.EscribirAArchivo(imagenN);
-
-
-            monitor.matrizO = lectorI.devolverImagen();
-            thr = new Thread[(picHeight/2)];
-            for(int i = 0; i < (picHeight/2); i++){
-                thr[i] = new Thread( new EscritorFila(2*i, monitor, opcion+5) );
-                thr[i].start();
+                sa.EscribirAArchivo(imagenN);
             }
-            for(Thread t : thr)
-                t.join();
-            thr = new Thread[(picHeight/2)];
-            for(int i = 0; i < (picHeight/2); i++){
-                thr[i] = new Thread( new EscritorFila((2*i)+1, monitor, opcion+5 ));
-                thr[i].start();
-            }
-            for(Thread t : thr)
-                t.join();
-
-            imagenN = monitor.matrizO;
-
-            sa = new SalidaArchivo(picWidth, picHeight, maxvalue, "imagen"+opcion+"E");
-
-            sa.EscribirAArchivo(imagenN);
         
         }
     }
