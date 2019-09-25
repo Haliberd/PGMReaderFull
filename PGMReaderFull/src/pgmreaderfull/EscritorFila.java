@@ -23,10 +23,38 @@ public class EscritorFila implements Runnable{
     
     @Override
     public void run() {
-        if(opcion == 1)
-            monitor.escribir3_2_1D(nFila);
-        if (opcion == 2)
-            monitor.escribir3_2_1E(nFila);
+        switch(opcion){
+            case (1):
+                monitor.escribir3_1D(nFila);
+                break;
+            case (2):
+                monitor.escribir3_2_1D(nFila);
+                break;
+            case (3):
+                monitor.escribir0_3_1D(nFila);
+                break;
+            case (4):
+                monitor.escribir0_3_2D(nFila);
+                break;
+            case (5):
+                monitor.escribir0_2_3_2_0D(nFila);
+                break;
+            case (6):
+                monitor.escribir3_1E(nFila);
+                break;
+            case (7):
+                monitor.escribir3_2_1E(nFila);
+                break;
+            case (8):
+                monitor.escribir0_3_1E(nFila);
+                break;
+            case (9):
+                monitor.escribir0_3_2E(nFila);
+                break;  
+            case (10):
+                monitor.escribir0_2_3_2_0E(nFila);
+                break;
+        }
         System.out.println(nFila);
     }
     
