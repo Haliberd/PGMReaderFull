@@ -26,7 +26,7 @@ public class LectorImagen {
     }
     
     int[][] devolverImagen() throws FileNotFoundException, IOException{
-        String filePath = "imgNueva.pgm";
+        String filePath = "imagen10000.pgm";
         FileInputStream fileInputStream = new FileInputStream(filePath);
         Scanner scan = new Scanner(fileInputStream);
         // Discard the magic number
